@@ -1,10 +1,10 @@
-## Day 1
+# Day 1
 
-# Rich Text Editor
+## Rich Text Editor
 
 Today I built an online text editor using javascript. This editor is similar Microsoft Word.
 
-# Demo
+## Demo
 
 Here is an example screenshot:
 
