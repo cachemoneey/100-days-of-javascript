@@ -1,0 +1,79 @@
+// html 
+
+div container
+    div header
+        div pw + id
+            button id + text
+        /div
+        div class
+            div class
+                label for (same as input id) + text
+                input id + value + type + min + max
+            /div
+
+            x 4 (without value, min, max)
+
+            /div
+            button class + id + text
+
+// style css
+
+// js
+
+const pw el get id 
+
+5 pw options var
+const pw length get id
+const uppercase get id
+const lowercase get id
+const number get id
+const symbols get id
+
+2 buttons var
+copy get id
+generate get id
+
+4 var as strings (will act like array)
+const uppercase letters
+const lowercase letters
+const number 
+const symbols 
+
+4 functions to get random upper n lower case letters and number and symbol
+
+func(){
+    return in above var[random num rounded up(random num btw 0-1 * var.length)] ;
+}
+
+- repeat this func 3 more times
+
+
+
+// func generate pw
+    declare a new length var as value of the pw length above;
+
+    declare a flex var pw as empty string;
+
+    for loop start at 0; iterate through length var; increment
+        declare var to generate x func
+        flex var pw += x;
+    
+    
+    assign the inner text of pw el the flex var pw;
+
+
+// func generate x
+    - declare a var as empty array;
+    - if (const uppercase is checked) {
+        var.push(uppercase func());
+    }
+
+    - repeat this 3 more times
+
+    - if length of var is absolutely 0 --> return empty string;
+
+    - return var[random num rounded up(random num btw 0-1 * var.length)] ;
+
+
+
+// when the generate button has the event 'click' run the funct generate pw
