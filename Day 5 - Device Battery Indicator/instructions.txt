@@ -1,0 +1,87 @@
+// html 
+
+section class
+    div class battery card
+        div class battery pill
+            div class battery level
+                div class battery liquid /div
+            /div
+        /div
+        div class battery data
+            p class + text
+            h1 class + text battery %
+            p class battery status
+                i class
+            /p
+        /div
+    /div
+/section
+
+
+
+// style css
+
+// js
+
+call a func to INITIALISE BATTERY
+
+// FUNC INITIALISE BATTERY 
+    - declare a const to doc qs battery liquid
+    - declare a const to doc qs battery status
+    - declare a const to doc qs battery %
+    run an inbuilt js func that gets the battery for navigator and then() with a batt param:
+        custom func to update battery = () => {
+            let var for battery level = level property of batt param * 100 all rounded up
+
+            assign the inner html of battery % as level + "%";
+
+            assign the height style of battery liquid as template literal `${}` ALL OF --> parse int(level property of batt param * 100) + %
+
+
+
+
+
+            if (battery level is 100) {
+                - inner html of battery status = `Battery Full <i class="ri-battery-2-fill green-color"></i>`
+                - battery height style = "103%";
+            } else if (battery level is less than or equal 20 & batt is not charging) {
+                - inner html of battery status = `Low Charge <i class="ri-plug-line animated-red animated-red"></i>`;
+            } else if (battery is charging) {
+                - inner html of battery status = `Charging ... <i class="ri-flashlight-line animated-green"></i>`;
+            } else {
+                inner html of battery status = "";
+            }
+
+
+
+            if (less than or equal 20) {
+                - add a class to battery liquid of "gradient-color-red";
+                
+                - remove a class from battery liquid of ("gradient-color-green", "gradient-color-orange", "gradient-color-yellow");
+
+            } else if level <= 48 {
+                - add a class to battery liquid of "gradient-color-orange";
+                
+                - remove a class from battery liquid of ("gradient-color-green", "gradient-color-red", "gradient-color-yellow");
+
+            } else if level <= 80 {
+                - add a class to battery liquid of "gradient-color-yellow";
+                
+                - remove a class from battery liquid of ("gradient-color-green", "gradient-color-orange", "gradient-color-red");
+            }
+
+            else {
+                - add a class to battery liquid of "gradient-color-green";
+                
+                - remove a class from battery liquid of ("gradient-color-red", "gradient-color-orange", "gradient-color-yellow");
+            }
+            /* ENSURE BELOW IS OUTSIDE THE UPDATE BATTERY FUNC
+
+            call the update battery func;
+
+            add an event listener to batt when the event "charging change" arrow function --> update battery func;
+
+            add an event listener to batt when the event "level change" arrow function --> update battery func;
+
+ 
+
