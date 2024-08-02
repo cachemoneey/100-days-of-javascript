@@ -1,0 +1,65 @@
+// html 
+div container
+    div stats
+        p id + text for score
+        p id + text for score
+    /div
+    div class + id
+        div class 
+            img
+        /div
+        div class 
+            img
+        /div
+    /div
+    div class 
+        button id + text flip
+        button id + text reset
+    /div
+
+
+
+// style css
+
+// js
+
+5 flex var
+
+1. assign heads to be 0
+2. assign tails to be 0
+3. assign coin to doc qs coin
+4. assign button to doc qs flip button
+5. assign button to doc qs reset button
+
+// 1 func
+Add an event listener to the flip button with a click event runs a func that:
+
+    - declare flex var i and assign a random number 0-1 * 2 then rounded up
+    - the coin has no animation style
+    - if i
+        set a time out (func() to make animation style of coin "spin heads forwards 3 seconds" with 100ms;
+        increment heads by 1;
+    - else  
+        set a time out (func() to make animation style of coin "spin tails forwards 3 seconds" with 100ms;
+        increment tails by 1;
+    }
+    - set a time out func wit the param of UPDATE SCORE FUNC and 3000ms
+    - call the DISABLE BUTTON FUNC
+
+
+// UPDATE SCORE FUNC 
+    - doc qs the id of p id in div stats .textcontent and assign template literals heads score with ${heads var};
+    - repeat but with tails var;
+
+
+// DISABLE BUTTON FUNC
+    - set the flip button var as true when disabled;
+    - set a time out (func()
+        set the flip button var as false when disabled for 3 seconds
+
+// 1 func
+Add an event listener to the reset button with a click event runs a func that:
+     - the coin has no animation style
+     - assign heads to be 0
+    - assign tails to be 0
+    - call the UPDATE SCORE FUNC 
