@@ -1,0 +1,76 @@
+// html
+
+div container
+    form id 
+        h3 text
+            input type + placeholder + required
+            input type + placeholder + required
+            input type + placeholder + required
+
+            div class
+                button type + id + text
+            /div
+    /form
+    form id
+        h3 text
+            input type + placeholder 
+            input type + placeholder 
+            input type + placeholder 
+
+            div class (same as above class)
+                button type + id + text
+                button type + id + text
+            /div
+    /form
+    form id
+        h3 text
+            input type + placeholder + required
+            input type + placeholder + required
+            input type + placeholder + required
+
+            div class
+                button type + id + text
+                button type + id + text
+            /div
+    /form
+    
+    div class
+        div id /div
+        div class <small>text</small></div
+        div class <small>text</small></div
+        div class <small>text</small></div
+    /div
+
+// style css
+
+// js
+
+8 VAR - all get id
+var form 1
+var form 2
+var form 3
+var next 1
+var next 2
+var back 1
+var back 2
+var progress
+
+for next 1 var assign func that when (on)clicked:
+    - styles the form 1 var left by -450px;
+    - styles the form 2 var left by 40px;
+    - styles the progress var width by 240px;
+
+for back 1 var assign func that when (on)clicked:
+    - styles the form 1 var left by 40px;
+    - styles the form 2 var left by 450px;
+    - styles the progress var width by 120px;
+
+for next 2 var assign func that when (on)clicked:
+    - styles the form 2 var left by -450px;
+    - styles the form 3 var left by 40px;
+    - styles the progress var width by 360px;
+
+for back 2 var assign func that when (on)clicked:
+    - styles the form 2 var left by 40px;
+    - styles the form 3 var left by 450px;
+    - styles the progress var width by 240px;
