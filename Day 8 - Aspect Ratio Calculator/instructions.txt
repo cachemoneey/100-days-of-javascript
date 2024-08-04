@@ -1,0 +1,44 @@
+// html 
+
+div container
+    h2
+        span with title
+    /h2
+    div class 1
+        input type + id + value
+        input type + id + value
+    /div
+    div class 
+        div class 2
+            label for (same as id) + text
+            input type + id + value
+        /div
+        div class 3
+            label for (same as id) + text
+            input type + id + value
+        /div
+
+
+// style css
+
+// js
+4 FLEX VAR GET id
+let ratio width
+let ratio height
+let width
+let height
+
+declare calculate width as a flex var and assign it arrow func:
+    - declare a flex var and assign it the value of ratio width var / the value of ratio height var;
+    - set the value of width var as a decimal number parsed in the (height value x the var created above) and add method to fixed(2);
+
+
+declare calculate height as a flex var and assign it arrow func:
+    - declare a flex var and assign it the value of ratio width var / the value of ratio height var;
+    - set the value of height var as a decimal number parsed in the (width value / the var created above) and add method to fixed(2);
+
+
+add event listener to height var with input event to calculate width;
+add event listener to width var with input event to calculate height;
+add event listener to ratio height var with input event to calculate width;
+add event listener to ratio width var with input event to calculate height;
