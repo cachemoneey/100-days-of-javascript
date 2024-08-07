@@ -1,0 +1,77 @@
+// html 
+
+div wrapper
+    div container
+        20 empty divs to make 4x5 portait tile design
+    /div
+    button id + text
+/div
+
+// style css
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+.wrapper
+
+position
+transform
+left
+top
+
+.container
+
+    background-color
+    height: calc 15 vector min x 5
+    width: calc 15 vector min x 4
+    display: 
+    grid-template-columns: repeat
+    padding:
+    gap: 
+    border-radius: 
+    box-shadow: 0 10 30 rgba 90 90 100 0.4
+
+.container div
+    position: 
+    height: 
+    width:
+
+button
+
+4 x .quad-circle-1234
+    clip path circle 100% at 1 2
+
+4 x .triangle-1234
+    clip path polygon 0 1,2,3,4,5 
+
+circle,
+    border-radius:
+
+
+// js
+
+- declare const button get id 
+- declare const shapes as array of strings
+    4 x .quad-circle-1234
+    4 x .triangle-1234
+    .circle
+
+- declare const colors as array of 4 colors of your choice
+- declare const boxes doc qsa for every div in container
+
+// func to generate art
+
+declare flex var to generate art and assign anon arrow func:
+    - for each(box) in boxes => 
+        the class NAME of box is empty string
+        declare let i as (random num x length of shapes) rounded up
+        declare let j as (random num x length of colors) rounded up
+        add a class of the i of shapes to box
+        style the background color of box assign j of color
+     });
+};
+
+- add an event listener to button when it is clicked it generates art
+- add an event listener t0 window when it loads it generates art
+
+        
