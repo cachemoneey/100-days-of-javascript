@@ -1,0 +1,77 @@
+// html 
+
+div wrapper
+    header with text
+    form action
+        div row
+            label with text
+            textarea
+        /div
+        div row
+            label with text
+            div outer
+                select
+            /div
+        /div
+        button with text
+    /form
+/div
+
+
+// style css
+
+// js
+
+3 const 
+textarea doc qs 
+v doc qs select
+btn doc qs button
+
+declare let speech as speech synthesis,
+    is speaking is true 
+
+call func to run voices
+
+// func voices()
+    for every (flex var) voice of synth + method to get voices
+        - declare let selected as name of voice and completely assigned to "Google US English" if "selected" else ""; (ternary)
+        - declare let option as temp literal with option value + objects of: "voice name" + selected> + voice name + (voice lang) </option>
+        - for list of voices insert adjacent html of before end and option params
+
+// add event listner to synth on event of voices changed, call voices  
+
+// func text to speech (text)
+    - declare let utterance as new speech utterance w param text
+    for every (flex var) voice of synth + get voices
+        - if voice name is completely assigned to voice list value
+            the utterance voice is voice
+        }
+    }
+    make synth speak w param utterance
+
+// add event listener to speech btn on click event, e => 
+    - prevent default of e
+     if the value of textarea not == empty str
+        if synth not speaking
+            tts func w param value of textarea
+        
+        if length of textarea value > 80 
+            set int callback func   
+                if synth not speaking & not is speaking
+                    is speaking true
+                    make inner txt speech btn "convert to speech"
+                else { }
+                },    500
+
+            if is speaking
+                resume synth
+                is speaking false
+                make inner txt speech btn "pause speech"
+            else 
+                pause synth
+                is speaking true
+                make inner txt speech btn "resume speech"
+
+        else
+                make inner txt speech btn "convert to speech"
+
