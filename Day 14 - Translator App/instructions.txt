@@ -1,0 +1,121 @@
+// html 
+
+div container
+    div wrapper
+        div txt input
+            txt area
+                spellcheck
+                class
+                placeholder
+            txt area
+                spellcheck
+                readonly
+                disabled
+                class
+                placeholder
+            /txt
+            /div
+            ul class
+                li class
+                    div class
+                        <i id="from" class="fas fa-volume-up"></i>
+                        <i id="from" class="fas fa-copy"></i>
+                    </div>
+                    select
+                /li
+                <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
+                li class
+                    select
+                    div class
+                        <i id="to" class="fas fa-volume-up"></i>
+                        <i id="to" class="fas fa-copy"></i>
+            
+
+
+
+      <button class >Translate Text</button>
+    </div>
+
+    <script src="js/countries.js"></script>
+    <script src="js/script.js"></script>
+
+// js
+
+6 const
+
+frm txt doc qs
+to txt doc qs
+exchange icon doc qs
+Translate btn doc qs
+select tag doc qsa
+icons doc qsa
+
+// for each tag, id in select tag => 
+    for let country code in countries array
+        - Declare a let id = 0 if country code is british assign (?) selected else "" : if country code is german assign (?) selected else ""
+        - declare let opt =  temp literal option  obj selected + value is obj c code">$ {array [country_code]}`
+        - insert adj html to tag of beforeend, opt
+
+
+// add ev list to xchange icon when click calls func =>
+    - declare let temp txt is value of from text var
+    - declare let temp lang is value of select tag [0] 
+    - value of from text var is value of to text
+    - value of to text is temp txt
+    - value of select tag [0] is value of select tag [1]
+    - value of select tag [1] is temp lang
+
+// add ev list to frm txt when key up calls func =>
+    - if not value of frm txt
+        value of to txt is empty string
+
+// add ev list to Translate btn when click calls func =>
+    - declare let txt as value of from text trim func 
+    - declare let Translate frm as value of select tag [0]
+    - declare let Translate to as value of select tag [1]
+    
+    if not txt return;
+
+    set attribute to text var of placeholder, translating...
+
+    let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${translateFrom}|${translateTo}`;
+
+    fetch apiUrl then make res => res json func then data => {
+        - value of to txt is translated txt of resp data of data
+        - for each matches in data w param data =>
+            if id of data is completely 0 
+                value of to text is translation of data
+            }
+        });
+        set attribute to text var of placeholder, translation
+
+
+
+// for each icon in icons =>
+    - add ev lis to icon when click w param obj target => 
+        if not value of frm txt or not value of to txt return;
+
+        if target has class ("fa-copy")
+            if target id is "from"
+                write txt to nav clipboard of value of frm txt value
+            
+            else 
+                write txt to nav clipboard of value of to txt value
+
+         else
+            let utterance
+            if target id is "from"
+                utterance is new sp utterance of frm txt value
+                utterance lang is value of select tag [0]
+
+            else 
+                utterance is new sp utterance of to txt value
+                utterance lang is value of select tag [1]
+
+            sp synth speak utterance
+
+
+
+        
+
+
