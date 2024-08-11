@@ -1,0 +1,122 @@
+// html 
+
+div wrapper
+    div gm-details
+    span class + txt
+    span class + txt
+    /div
+
+    div class
+
+    div class
+        i data-key="ArrowlLeft" + font awe
+        i data-key="ArrowlUp" + font awe
+        i data-key="ArrowlRight" + font awe
+        i data-key="ArrowlDown" + font awe
+
+
+// js
+
+4 const (. for all )
+play board doc qs
+score el doc qs
+high score el doc qs
+controls doc qs all ctrls i
+
+7 let
+gm over = false
+foodx, foody
+snakeX = 5, snakeY = 5;
+velocityX = 0, velocityY = 0;
+snakeBody = [];
+setIntervalId;
+score = 0;
+
+// Get high score from local storage
+
+- declare let high score as get item ls w high score class OR 0;
+- inner txt high score el is temp literal high score: + let high score as obj
+
+// Pass a random between 1 and 30 as food position
+
+- declare const update Food Position assign as func =>
+    foodx is (random num func rounded up x 30) + 1
+    foody is (random num func rounded up x 30) + 1
+
+- declare const handle gm over assign as func =>
+    clear int w param set int id
+    call alert that gm over & press ok to play
+    reload location
+
+// Change velocity value based on key press
+
+- declare const Change direction assign as e =>
+    if key of e completely is ArrowUp & velocity not eq 1 
+        velocityX = 0;
+        velocityY = -1;
+    else if key of e completely is ArrowDown & velocity not eq -1 
+        velocityX = 0;
+        velocityY = 1;
+    else if key of e completely is ArrowLeft & velocity not eq 1 
+        velocityX = -1;
+        velocityY = 0;
+    else if key of e completely is ArrowRight & velocity not eq -1 
+        velocityX = 1;
+        velocityY = 0;
+
+// Change Direction on each key click
+
+for each btn in controls => add ev list to btn when click run func => 
+    Change direction func w param of obj key: key of btn dataset
+
+declare const assign as func to initialize game
+    if game over return handle gm over func
+    let html is temp literal div class food , grid-area style {foodx} / {foody}
+
+    // When snake eat food
+    if snakeX completely foodx & snakeY completely foody
+        call update Food Position
+        push to snake body array foody , foodx
+        score++;
+        if score > high score then high score = score (ternary)
+        set item ls high score as string and var
+        add inner txt to score el using temp literal
+        add inner txt to high score el using temp literal
+
+        }
+
+         // Update Snake Head
+        snakeX += velocityX;
+        snakeY += velocityY;
+
+        // Shifting forward values of elements in snake body by one
+        for loop i snake body len -1;  i > 0; i--;
+            snakeBody i = snakeBody i -1
+
+        snakeBody[0] is arr snakeX snakey
+
+        // Check snake body is out of wall or no
+
+        if (snakeX <= 0 or
+        snakeX > 30 or 
+        snakeY <= 0 or
+        snakeY > 30) 
+
+        return gameOver = true;
+
+        // Add div for each part of snake body
+
+        for loop i 0; i < snakeBody len; i++
+            add html += div class head , grid area style {snakeBody[i][1]} {snakeBody[i][0]}
+
+            // Check snake head hit body or no
+            if i not = 0 & snakeBody[0][1] completely = snakeBody[i][1] & snakeBody[0][0] completely = snakeBody[i][0]
+                gameOver true
+            }
+        }
+    playBoard inner html is html
+}
+
+call update Food Position
+setInterval Id is set Interval (initialize game func , 100)
+add ev list to doc when keyup , call Change direction 
