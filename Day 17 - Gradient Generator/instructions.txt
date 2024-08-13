@@ -1,0 +1,69 @@
+// html 
+
+div container
+    div colors
+        input type color + id color-a + value="#7986cb"
+        input type color + id color-b + value="#7986cb"
+    /div
+    div buttons (8 buttons)
+        button onclick => set direction (to top, this)
+            i class arrow up
+        /button
+        button onclick => set direction (to bottom, this)
+            i class arrow down
+        /button
+        button onclick => set direction (to right, this)
+            i class arrow right
+        /button
+        button onclick => set direction (to left, this)
+            i class arrow left
+        /button
+        button class rotate-icon onclick => set direction (to top right, this)
+            i class arrow up
+        /button
+        button  class rotate-icon onclick => set direction (to bottom left, this)
+            i class arrow down
+        /button
+        button  class rotate-icon onclick => set direction (to bottom right, this)
+            i class arrow right
+        /button
+        button  class rotate-icon onclick => set direction (to top left, this)
+            i class arrow left
+        /button
+    /div
+    button id submit onclick generate code() + generate txt
+    div output
+        txt area id code rows 2
+        button id copy onclick copy txt() + copy txt
+
+// style css
+
+// js
+
+4 let
+color one doc get id 
+color two doc get id 
+output code doc get id
+current direction is 'to bottom'
+
+
+// func to set direction with params value, _this
+    - declare a let directions and get all classes of buttons button
+    - for let i of directions
+        remove active class from i
+    }
+    add active class to this
+    assign current direction as value
+
+
+// func to generate code
+    - the value of output code is temp literal bg img: linear grad {current direction}, {color one value} {color two value}
+    - doc get els by tag name "BODY"[0] & style bg img same as above from linear grad
+
+// func to copy txt 
+    - select method on output code
+    - exec command of copy to doc
+    - create alert of gradient being copied
+
+
+call generate code
