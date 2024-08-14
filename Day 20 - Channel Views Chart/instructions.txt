@@ -1,0 +1,53 @@
+// html
+
+div card
+    h2 channel views
+    p by month
+    div pulse
+    div chart-area
+        div grid
+
+// style css
+
+// js
+
+const chart options is an obj
+    chart (obj):
+        type areaheight 180
+        toolbar {show: false }
+        zoom {enabled false}
+
+    },
+     colors: ['#3498db'],
+     series: [{ name: 'Views', data: [18, 50, 42, 94, 41, 65] }],
+     data labels {enabled false}
+     stroke { width 3, curve smooth}
+    fill: (obj)
+        type gradient
+        gradient (obj)
+            shade intens 1
+            opa from 0.7
+            opa to 0
+            stops [0 90 100]
+    
+
+    xaxis (obj)
+        categories [any 6 months]
+        axis border { show false}
+        labels { style {colors a7a7a7, font fam poppins}}
+    
+    yaxis { show false}
+    grid
+        border color rgba 0 0 0 0
+        padd { top: -30, bottom: -8, left: 12, right: 12 }
+    tooltip
+        enabled true
+        y { formatter: val =. `${val}K`}
+        style {font fam poppins}
+    
+    markers {show false}
+
+
+
+- const chart is new apex charts doc qs chart-area, chart options
+- render func to chart
