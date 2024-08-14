@@ -1,0 +1,130 @@
+// html
+
+div container
+    p id + class + txt score 
+    btn id + txt start
+/div
+
+div wrapper hide
+    div game
+        div color1 colors /div
+        div color2 colors /div
+        div color3 colors /div
+        div color4 colors /div
+        div id + txt 00
+
+
+// style css
+
+// js
+
+6 const 
+
+score el doc get id 
+color parts doc qsa .
+
+container el doc qs .
+start btn doc qs #
+result el doc qs #
+wrapper el doc qs .
+
+// current and new colors object
+
+const color Object is object
+    color1: {current: red, new: dark red},
+    color2: {current: green, new: dark green},
+    color3: {current: blue, new: dark blue},
+    color4: {current: yellow, new: dark yellow},
+
+// game variables
+
+let randomColors is array
+let isPathGenerating is false;
+let score 0;
+let clickCount 0;
+
+// function to get a random color from colors object
+
+declare a const get random color n assign as func with param color object =>
+    - declare const color keys is the keys of obj with arg color obj
+    - return color keys with i of [rounded up(random num() x color keys len)]
+
+// function to pause execution of game for given amount of time
+
+const delay is an ASYNC func with param of time => 
+    - return await new promise (from resolve => set time w args resolve , time)
+
+// function to generate a random path of colors
+
+const generate Random Path is an ASYNC func => 
+    - push the get random colors func with arg color obj to randomColors
+    - set score as the len of randomColors
+    - set isPathGenerating true
+    - await show path func with arg randomColors
+
+// function to show the path of colors to player
+
+const showPath is a func an ASYNC func with param of colors =>
+    - give txt to score el of score
+    - for loop color of colors
+        declare const current color is doc qs temp lit .${color}
+        await delay(500)
+        set bg color style of current color as color obj with color param .new;
+        await delay(600)
+        set bg color style of current color as color obj with color param .current;
+        await delay(600)
+    }
+    - set isPathGenerating false
+
+
+// function to end the game and show final score
+
+const endGame is a func =>
+    - add html to result el of span score: /span ${score}
+    - remove hide class from result el
+    - remove hide class from container el 
+    - add hide class from wrapper el 
+    - add txt to start btn to play again
+    - remove hide class from start btn
+
+
+// function to reset game after ending
+
+const resetGame is a func =>
+    - score is 0
+    - clickCount is 0
+    - randomColors is empty array
+    - isPathGenerating false
+    - remove hide class from wrapper el 
+    - add hide class from container el 
+    - call generate random path()
+
+
+// function to handle a color being clicked
+
+const handleColorClick is an ASYNC func e =>
+    - if isPathGenerating
+        return false
+
+    - if target class of e contains (randomColors w clickCount param)
+        - style the bg color of e target as color obj with i of randomColors[clickCount].new
+        - await delay(500)
+        - style the bg color of e target as color obj with i of randomColors[clickCount].current
+        - increment clickCount
+        - if clickCount completely eq score
+            clickCount is 0
+            call generate random path ()
+
+    } else {
+       call endGame();
+    }
+};
+
+// Event Listeners
+
+- add e lis to start btn when click call resetGame
+- for each color in color parts => add e lis to color when click call handleColorClick
+
+
+
+
