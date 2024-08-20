@@ -1,0 +1,172 @@
+// html
+
+div container
+    div picker
+        btn id picker-btn + txt
+        btn id export-btn + txt
+    /div
+    div colors-list hide
+        header
+            p title
+                txt
+            /p
+            span id clear-btn + txt
+        /header
+        ul all-colors
+    /div
+
+// style css
+
+// js
+
+4 conat 
+picker btn doc qs #
+clear btn doc qs #
+color list doc qs .
+export btn doc qs #
+
+let picked colors is JSON parsed (ls get item with param "colors-list") OR empty array
+
+let current popup null
+
+declare copy to clipboard as a const async func with params txt, el => 
+    try 
+        - await write txt of nav clipboard with param txt
+        - inner txt of el is a str that tells you it's copied
+        - set a time out for 1000ms where inner txt of el is txt
+
+    } catch (error)
+        - call alert that filed to copy txt
+
+
+declare export colors as a const func 
+    - declare c color txt is picked colors join meth w new line in str
+    - declare c blob is new Blob meth w arr of color txt, object of type: str txt/plain
+    - declare c url is create obj URL to URL w param blob
+    - declare c a is create el to doc of "a"
+
+    - href of a is url
+    - download of a is "colors.txt"
+    - add child a to doc body
+    - run click meth on a
+    - remove child a to doc body
+    - run revoke object URL of url on URL
+
+
+
+declare create color popup as a const func w param color
+    - declare c popup is create el doc of "div"
+    - add class to popup of color popup 
+    - add html to popup
+        <div class="color-popup-content">
+            <span class="close-popup">x</span>
+            <div class="color-info">
+                <div class="color-preview" style="background: ${color};"></div>
+                <div class="color-details">
+                    <div class="color-value">
+                        <span class="label">Hex:</span>
+                        <span class="value hex" data-color="${color}">${color}</span>
+                    </div>
+                    <div class="color-value">
+                        <span class="label">RGB:</span>
+                        <span class="value rgb" data-color="${color}">${hexToRgb(color)}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    - declare c close popup is popup qs .close popup 
+    - add e list to close popup when click
+        - remove child popup from doc body
+        current popup null
+
+    - declare c color values is popup qsa .value
+    - for each value in color values =>
+        add e list to value click (e) => 
+            declare c txt is inner txt of e.currentTarget
+            call copy to clipboard func w args txt, e.currentTarget
+        });
+    });
+
+    return popup
+};
+
+declare show colors as a const func 
+    - add html to color list is picked colors map through each color =>
+        `
+            <li class="color">
+                <span class="rect" style="background: ${color}; border: 1px solid ${color === "#ffffff" ? "#ccc" : color}"></span>
+                <span class="value hex" data-color="${color}">${color}</span>
+            </li>
+        `
+    ) + join method w empty str
+
+    - declare c color els is doc qsa .color
+    - for each li in color els => 
+        - declare c color hex is li qs .value.hex  
+        - add e list to color hex when click (e) => 
+            declare c color is dataset.color of e.currentTarget
+            if current popup
+                remove child current popup from doc body
+            
+            - declare c popup is create color popup w color
+            - add child popup to doc body
+            - current popup is popup
+        });
+    });
+
+    declare c picked colors container is doc qs .colors-list
+    toggle class on picked colors container "hide", len of picked colors completely eq 0
+};
+
+declare hex 2 rgb as a const func w param hex
+     c bigint is parse int(hex.slice(1), 16)
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgb(${r}, ${g}, ${b})`;
+};
+
+declare activate eye dropper as a const async func  
+    - style display doc body "none"
+    try
+
+        - declare c obj sRGBHex is await new Eye dropper func w open meth
+
+        - if not sRGBHex include in picked colors
+            push sRGBHex to picked colors
+            set item to ls of "colors-list", JSON.stringify(pickedColors)
+        }
+
+        call show colors func
+
+    } catch (error)
+
+        - call alert that filed to copy the color code
+    } finally {
+        - style disp doc body "block"
+    }
+
+    - declare c clear all colors as func => 
+        - pickedColors empty arr
+        - remove item colors-list from ls
+        - call show colors func
+
+- add e list clear btn when click call clear all colors
+- add e list picker btn when click call activate eye dropper
+- add e list export btn when click call export colors
+
+- call show colors func
+
+notes:
+
+- colors list const should be all-colors class
+-  a.download is literally "Colors.txt"
+- 76 colorsList.innerHTML = pickedColors.map((color) =>  there is no curly brackets after this
+- in showColors func current popup child  and popup child are not in quotes --> document.body.removeChild(current-popup) +  document.body.appendChild(popup)
+- in show colrs func forgot  currentPopup = popup;
+- in export colors a should not be in quotes ehn adding and removing child --> document.body.appendChild(a)
+    document.body.removeChild(a);
+
+
