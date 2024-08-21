@@ -1,0 +1,121 @@
+// html
+
+div donut-container
+    pre id donut
+
+// style css
+
+body{
+    background-color: 
+    color: 
+    height: 
+    overflow: 
+}
+
+pre{
+    font-family: 
+    font-size: 
+}
+
+.donut-container{
+    display: 
+    align-items: 
+    justify-content: 
+    height: 
+}
+
+// js
+
+function
+    - declare var pre tag is doc get id 
+    
+     // Angles, Radius and Contants
+     - declare var A is 1
+     - declare var B is 1
+
+     - declare var R1 is 1
+     - declare var R2 is 2
+
+     - declare var K1 is 150
+     - declare var K2 is 5
+
+    //  Function to render ASCII frame
+
+    - declare var b is arr
+    - declare var z is arr
+
+    - declare var width is 280
+    - declare var height is 160
+
+    A += 0.07
+    B += 0.03
+
+    - declare 
+            var cA is Math.cos(A),
+            sA = Math.sin(A),
+            cB = Math.cos(B),
+            sB = Math.sin(B);
+
+        for loop k < width x height
+
+            b[k] is k percentage width == width -1 --> new line as str ELSE empty str (use ternary)
+
+            z with i of k is 0
+
+        for j < 6.28, j += 0.07
+            - declare var ct is math cos of j
+            - declare var st is math sin of j
+
+            for i < 6.28, i += 0.02
+                - declare var sp is math sin of i
+                - cp is math cos of i
+                    h is ct + 2
+
+                    D is 1 / (sp * h * sA + st * cA + 5),
+
+                    t is sp * h * cA - st * sA;
+
+                - declare var x is rounded up(width / 2 + (width / 4) x D x (cp x h x cB - t x sB))
+
+                - declare var y is rounded up(width / 2 + (height / 4) x D x (cp x h x cB + t x sB))
+
+                - declare var o is x + width x y
+
+                - declare var N is rounded up(B x ((st * sA - sp * ct * cA) * cB - sp * ct * sA - st * cA - cp * ct * sB))
+
+                if (y < height and y >= 0 & x >= 0 and x < width and D > z with i of o)
+                    z with i of o is D
+
+                    b with i of o is '.,-~:;=!*#$@'[N > 0 ? N : 0];
+                }
+            }
+        }
+
+        - add html to pre tag of b with join method of empty str
+    
+}
+
+// func start ASCII anim
+
+    - run meth ascii Interval id of window is set int w params render ascii frame func and 50
+
+}
+
+call render ascii frame func
+
+if doc.all
+    - set attach event of window w params 'onload' and start ASCII anim func
+
+else 
+    - add e list to window with params 'load' and start ASCII anim func and false
+
+}
+
+- add e list to window w params 'resize' and render ascii frame func
+
+Notes: 
+
+- when for loop start with var 
+- forgot var line 53
+- asciiIntervalId func does not start with capital and has no (
+-  Math.cos() and Math.sin() not with []
