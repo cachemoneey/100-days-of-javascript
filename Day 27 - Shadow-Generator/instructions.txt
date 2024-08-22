@@ -1,0 +1,129 @@
+// html
+
+div container
+    div result
+        div id preview /div
+    /div
+
+    div settings
+        div range-wrapper (for all 6 divs)
+            label for x-shadow + txt 
+            input type range (for all 6 divs) id (same as for) min -100 max 100 value any
+        /div
+
+        div range-wrapper (for all 6 divs)
+            label for y-shadow + txt 
+            input type range (for all 6 divs) id (same as for) min -100 max 100 value any
+        /div
+
+
+        div range-wrapper (for all 6 divs)
+            label for blur-r + txt 
+            input type range (for all 6 divs) id (same as for) min 0 max 100 value any
+        /div
+
+
+        div range-wrapper (for all 6 divs)
+            label for spread-r + txt 
+            input type range (for all 6 divs) id (same as for) min -50 max 50 value any
+        /div
+
+
+        div range-wrapper (for all 6 divs)
+            label for border-r + txt 
+            input type range (for all 6 divs) id (same as for) min 0 max 100 value any step 1 
+        /div
+
+
+        div range-wrapper (for all 6 divs)
+            label for shadow-opacity + txt 
+            input type range (for all 8 divs) id (same as for) min 0 max 1 value any  step 0.1 
+        /div
+
+        div input-wrapper 
+            label for inset-shadow + txt 
+            input type checkbox (for all 8 divs) id (same as for)  
+        /div
+
+        div color-wrapper 
+            label for shadow-color + txt 
+            input type color (for all 8 divs) id (same as for) 
+        /div
+
+        div code-container 
+            txtarea id styles rows 2
+            btn id copy-styles onclick copy styles() + txt
+        /div
+
+
+// style css
+
+// js
+
+4 const 
+
+preview get id 
+styles get id
+ranges get id
+copy button get id
+
+
+// Add event listener to each range input
+
+for each slider in range => 
+    - add e list to slider when input, generate styles func
+
+
+1. generate styles func
+    8 const get id.value (except .checked for shadow inset):
+
+    x shadow
+    y shadow
+
+    blur radius
+    spread radius
+
+    shadow color
+    shadow opacity
+    shadow inset
+
+    border radius
+
+    // Create the box shadow CSS property value
+
+    - declare c box shadow as TEMP LIT 
+        shadow inset if "inset " else "" (use ternary)
+        x shadow px
+        y shadow px
+
+        blur radius px
+        spread radius px
+
+        hexToRgba func w params (shadow color, shadow opacity)
+        
+        - give preview a boxShadow style of boxShadow
+        - give preview a borderRadius style of temp lit borderRadius px
+
+        - give styles txt context of temp lit box-shadow: {boxShadow} with ;new line border-radius: {borderRadius} px
+    
+    }
+
+2. func hexToRgba w params (shadow color, shadow opacity)
+        - declare c r is parse int substr from shadow color (1, 2), 16
+        - declare c g is parse int substr from shadow color (3, 2), 16
+        - declare c b is parse int substr from shadow color (5, 2), 16
+
+        - return temp lit rgba {r} {g} {b} {shadow opacity}
+
+    }
+
+3. func copy styles
+    - select method on styles
+    - exec com to doc of copy
+    - make txt of copy btn show copied
+    - set timeout for 500ms to make txt of copy btn show copy styles
+
+4. call generate styles func
+
+notes: 
+- ranges el doc qsa .settings input
