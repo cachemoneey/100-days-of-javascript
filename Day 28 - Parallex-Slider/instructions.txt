@@ -1,0 +1,68 @@
+// html
+
+div hero-slider carousel
+    div carousel-cell style bg-img: url(1.jpg)
+        div gradient /div
+        div info-container
+            h3 header + txt
+            h2 text + txt
+            btn + txt
+        /div
+
+    /div
+
+     div carousel-cell style bg-img: url(2.jpg)
+        div gradient /div
+        div info-container
+            h3 header + txt
+            h2 text + txt
+            btn + txt
+        /div
+
+    /div
+
+     div carousel-cell style bg-img: url(3.jpg)
+        div gradient /div
+        div info-container
+            h3 header + txt
+            h2 text + txt
+            btn + txt
+        /div
+
+    /div
+
+
+
+// style css
+
+// js
+
+- declare c options as an ojb
+    accessibility true
+    prev next btns true
+    page dots true
+    set gallery size false
+    arrow shapw is obj {
+        x0: 1,
+        x1: 58,
+        y1: 62,
+        x2: 55,
+        y2: 48,
+        x3: 18
+    }
+
+// Function to set background position forr slides
+
+function set Bg Position w params (slide, index)
+    - declare c x is negative (slide target + f1kty.x) divided by 3
+    - style the bg position of slides[index] is a temp lit with x in pixels
+
+// Slides initialization
+
+- declare c carousel is doc qs carousel in []
+- declare c slides is get array from doc get els cl name carousel-cell
+- declare c f1kty is new Flickity func w args carousel, options
+
+// Event listener using bg position
+ - when f1kty has meth on and event "scroll call a func:
+    - for each slides in f1kty set bg position
