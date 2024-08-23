@@ -1,0 +1,90 @@
+// html
+
+div container
+    h1 txt
+    label for msg + txt
+    txtarea id msg rows 5 cols 50 + txt
+    label for key + txt
+    input type txt id key value AsmrProg size 50
+    div btns
+        btn id enc-btn + txt
+        btn id dec-btn + txt
+    /div
+
+    h2 txt
+    div id result
+
+
+// style css
+
+// js
+
+- declare c alphabet is ABC abc 0123 ,?!'_-&@#$%*()/:<>|+= as string
+
+func encrypt txt w params txt, key
+    - declare let encrypted txt as empty string
+
+    - for loop thru i < txt.len
+        - declare c txt char is txt w i of i
+        - declare c key char is key w i of i % key.len
+
+        - declare c txt index is index of meth alphabet w arg txt char
+        - declare c key index is index of alphabet w arg key char
+
+        if txt index comp eq -1
+            encrypt txt add assign txt char
+        else
+            declare c new index is (txt index + key index) as percentage of len of alphabet;
+            encrypted txt add assign alphabetw i of newIndex
+        }
+    }
+
+    return encrypted txt
+}
+
+func decrypt txt w params encrypted txt, key
+    - declare let decrypted txt as empty string
+
+    for loop thru i < encrypted txt.len
+        - declare c encrypted char is encrypted txt w i of i
+        - declare c key char is key w i of i % key.len
+
+        - declare c encrypted txt index is index of meth alphabet w arg encrypted char
+        - declare c key index is index of alphabet w arg key char
+
+        if encrypted txt comp eq -1
+            decrypted txt add assign encrypted char
+        else
+            declare let new index is encrypted index - key index
+            if new index < 0 new index add assign alphabet len
+            decrypted txt add assign alphabet w i of new index
+        }
+    }
+
+    return decrypted txt
+}
+
+func update result w param is encrypting
+    - declare c txt is doc id msg.value
+    - declare c key is doc id key.value
+
+    - declare let result as empty string
+
+    if is encrypting
+        result is encrypt txt w args txt, key
+    else
+        result is decrypt txt w args txt, key
+    }
+
+    doc get id "result" .textcontent is result
+
+}
+
+- add e list to doc get id enc-btn when clicked call func
+    update result true
+
+- add e list to doc get id dec-btn when clicked call func
+    update result false
+
+- add e list to doc get id enc-btn when DOM content loaded call func
+    update result true
