@@ -1,0 +1,69 @@
+// html 
+
+div id card class card
+    header
+        h3 + txt
+    /header
+    div card-body
+        div logo
+            img logo
+            h4 + txt
+        /div
+        p AsmrProg is a popular YouTube channel that caters to tech enthusiasts, aspiring web developers, and anyone interested in the world of web coding.
+        /p
+        h4 txt
+        ul
+            li txt /li
+            li txt /li
+            li txt /li
+            li txt /li
+        /ul
+    /div
+    footer
+        btn youtube
+        btn reset
+    /footer
+/div
+
+// style css
+
+// js
+
+3 const 
+
+card doc qs #card
+card header is card qs header
+reset btn doc qs .reset
+
+5 let
+
+clicked is false
+start top is card offset top
+start left is card offset left
+offsetX
+offsetY
+
+
+- add e list to card header when 'mousedown' (e)
+    - clicked true
+    - offsetX is e w client x - card offset left
+    - offsetY is e w client y - card offset top
+
+
+
+- add e list to doc when 'mouseup' 
+    - clicked false
+
+- add e list to doc when 'mousemove' (e)
+    - if not clicked return
+
+    - declare c obj client x, client y is e
+    - style card left as temp lit as client x - offsetX px
+    - style card top as temp lit as client y - offsetY px
+
+- func reset position
+    - style card left as temp lit as start left px
+    - style card top as temp lit as start top px
+
+
+- add e list to reset btn when 'click', reset position func
