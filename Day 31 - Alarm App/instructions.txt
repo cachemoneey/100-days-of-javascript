@@ -1,0 +1,122 @@
+// html 
+
+div wrapper
+    div current time + 00:00:00
+    div container
+        div inputs
+            input type num + id hour-input + placeholder 00 + min 0 + max 23
+            input type num + id minute-input + placeholder 00 + min 0 + max 59
+        /div
+        div buttons
+            btn id set + txt add alarm
+            btn clear + id set + txt clear all
+        /div
+        div alarms-list
+
+// style css
+
+// js
+
+7 const 
+
+timer ref doc qs .current time
+active alarm doc qs .alarms list
+clear all btn  doc qs .clear
+
+hour input doc get id hour-input
+minute input doc get id minute-input
+set alarm doc get id set
+
+alarm sound new audio "mp3"
+
+4 let
+
+alarm index 0
+alarms array []
+initial hour 0
+initial min 0
+
+- declare c appens zero is a func w param value => (
+    value less than 10 then add "0" to val else value using ternary
+)
+
+- declare c display timer is a func =>
+    - declare c date is new date meth
+    - declare c current time is date w to Locale Time String meth w params "en-US", obj hour12 is false
+    - txt content of timer ref is current time
+
+    - for each alarm in alarms array =>
+        - if alarm is active and time is comp eq to current time slice 0, 5
+        - play meth on alarm sound
+        }
+    });
+};
+
+- declare c create alarm is a func w params hour, minute
+    - add assign 1 to alarm index
+
+    - declare c alarm obj is obj
+        - id: temp lit {alarm index}_{hour}_{minute}
+        - time: temp lit appendZero func w param hour: appendZero func w param minute
+        - isActive: false
+
+    };
+
+    - push alarm obj to alarm array
+    - declare c alarm div as created el div
+    - dataset id of alarm div is id of alarm obj
+    - add html to alarm div of temp lit span + {alarmObj.time}
+
+    - declare c checkbox is created el input
+    - type of checkbox is checkbox
+    - add e list to checkbox when change call toggle alarm func w param alarm obj 
+    - add child checkbox to alarm div
+
+    - declare c delete btn created el btn
+
+    - add html to delete btn `<i class="fa-solid fa-trash-can"></i>`
+    - add class name "deleteButton to delete btn
+    - add e list to delete btn when click call func delete alarm w param alarm obj 
+    - add child delete btn to alarm div
+
+    - add child alarm div to active alarms
+};
+
+- declare c toggle alarm func w param alarm
+    - alarm is active is not alarm is active
+    - if alarm is active
+        - c current time is new date meth .to Locale Time String w args "en-US", obj hour12 : false . slice (0, 5)
+        - if time of alarm is comp eq current time
+            - play alarm sound
+
+        - else 
+            - pause alarm sound
+        
+
+- declare c delete alarm func w param alarm
+    - c index is index of alarms array w param alarm
+    - if index > -1
+        - splice alarms array w index, 1
+        - doc qs tmep lit [data-id="${alarm.id}"] .remove()
+
+
+- add e list to clear all btn when click  
+    - alarms array is empty
+    - add html to active alarms empty String
+
+- add e list to set alarm when click    
+    - let hour is parse int value of hour input or 0
+    - let minute is parse int value of minute input or 0
+
+    - if hour < 0 || hour > 23 || minute < 0 || minute > 59
+         alert invalid hour or min. please enter a valid range
+
+    - if (!alarmsArray.some(alarm => alarm.time === `${appendZero(hour)}:${appendZero(minute)}`))
+        create alarm w args hour minute
+
+    - array value of hour input, value of min input are array of 2 empty Strings
+});
+
+- when window (on)loads call func
+    - set int w display timer, 1000ms
+    - array value of hour input, value of min input are array of 2 empty Strings
