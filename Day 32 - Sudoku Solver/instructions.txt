@@ -1,0 +1,136 @@
+// html
+
+h1 title
+div sudoku-container
+    table
+        tbody id sudoku-grid
+        /tbody
+    /table
+/div
+btn id solve-btn + txt
+
+
+// style css
+
+// js
+
+- add e list when DOM content loads calls a function
+    - declare c grid size 9
+    - declare c solve btn is doc get id 
+    - add e list to c solve btn when click solve sudoku func
+
+    - declare c sudoku grid doc get id 
+
+    - for row < grid size
+        - declare c new row is created el "tr"
+        - for col < grid size
+            - declare c cell is created el "td"
+            - declare c input is created el "input"
+            - input type is number
+            - input class name is cell
+            - input id is tmep lit cell-{row}-{col}
+            - add child input to cell
+            - add child cell to new row
+        }
+        - add child new row to sudoku grid
+    }
+});
+
+
+- solve sudoku async func
+    - declare c grid size 9
+    - declare c sudoku array empty
+
+    - for row < grid size
+        - sudoku array w i of row is empty array
+        - for col < grid size
+            - declare c cell id is tmep lit cell-{row}-{col}
+            - declare c cell value is doc get id of cell id.value
+            - if sudoku array w i of row & col is cell value !== empty str --> parse int of cell value else 0
+        }
+    }
+
+    - for row < grid size
+        - for col < grid size
+            - declare c cell id is tmep lit cell-{row}-{col}
+            - declare c cell is doc get id cell id
+
+            if sudoku array w i of row & col not eq= 0
+                - add a class of user-input to cell
+            }
+        }
+    }
+
+    if func solve sudoku helper w arg sudoku array
+        - for row < grid size   
+            - for col < grid size   
+                - declare c cell id is tmep lit cell-{row}-{col}
+                - declare c cell is doc get id cell id
+
+                if not cell contains class user-input
+                    - value of cell is sudoku array w i of row & col
+                    - add class solved to cell
+                    - await sleep(20)
+                }
+            }
+        }
+    } else {
+        - call alert that no solution exists for sudoku puzzle
+    }
+}
+
+
+- func solve sudoku helper w param board
+    - declare c grid size 9
+    
+    - for row < grid size   
+            - for col < grid size 
+                if board w i of row & col comp eq 0
+                    - for let num 1 num <= 9
+                        - if is valid move func w args board, row, col, num
+                            - board w i of row & col is num
+
+                            - if func solve sudoku helper w param board
+                                return true
+                            }
+
+                            board w i of row & col eq 0
+                        }
+                    }
+                    return false
+                }
+            }
+        }
+
+        return true
+}
+
+
+                             
+
+
+- is valid move func w args board, row, col, num
+    - declare c grid size 9
+    
+    - for let i < grid size  
+        if board w i row and i comp eq num OR board w i of i and col comp eq num
+            return false
+        }
+    }
+
+    declare c start row is rounded up (row / 3) x 3
+    declare c start col is rounded up (col / 3) x 3
+
+    for let i start row i < start row + 3
+        for let j start col j < start col + 3
+            if board w i and j comp eq num   
+                return false
+            }
+        }
+    }
+
+    return true
+}
+
+- func sleep w param ms
+    return new promise w arg resolve => set time out w args resolve, ms
