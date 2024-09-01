@@ -1,0 +1,111 @@
+// html 
+
+div glass-preview
+    div glass-preview-rectangle
+/div
+
+div container
+    div content
+        h1 + txt
+        div input-container
+            label for blur + txt
+            input type range + id blur + min 0 + max 30 + value
+        /div
+
+        div input-container
+            label for transparency + txt
+            input type range + id transparency + min 0 + max 1 + step 0.01 + value
+        /div
+
+        div input-container
+            label for color + txt
+            input type color + id color + value #000
+        /div
+
+        div input-container
+            label for outline + txt
+            input type range + id outline + min 0 + max 10 + value
+        /div
+
+        div input-container
+            label for css-code + txt
+            txtarea id css-code + readonly
+        /div
+        btn id copy-btn + txt
+
+
+// style css
+
+// js
+
+6 const 
+
+blur input doc get id 
+transparency input doc get id 
+color input doc get id 
+outline input doc get id 
+css result doc get id 
+glass rec doc qs .glass-preview-rectangle
+
+- value of blur input is 1
+- value of transparency input is 0.31
+- value of color input is "#000"
+- value of outline input is 0
+
+- call update glass preview func
+
+- add e list blur input when input call update glass preview func
+- add e list transparency input when input call update glass preview func
+- add e list outline input when input call update glass preview func
+
+
+- add e list color input when input () => 
+    - call update glass preview func
+    - call update css code func
+
+
+- func to update glass preview func
+    - declare c blur value is value of blur input
+    - declare c transparency value is value of transparency input
+    - declare c color value is value of color input
+    - declare c outline value is value of outline input
+
+    - style the backdrop filter of glass rec as temp lit blur{blurValue}px
+    - style the bg color of glass rec as temp lit rgba({hextorgb(color value)},{transparency value}
+    - style the outline of glass rec as temp lit {outline value}px solid {color value}
+
+    - call update css code func
+
+
+- func to update css code 
+    - declare c blur value is value of blur input
+    - declare c transparency value is value of transparency input
+    - declare c color value is value of color input
+    - declare c outline value is value of outline input
+
+    - declare c css code as temp lit background-color: rgba(${hexToRgb(colorValue)}, ${transparencyValue});\nbackdrop-filter: blur(${blurValue}px);\n-webkit-backdrop-filter: blur(${blurValue}px);\noutline: ${outlineValue}px solid ${colorValue};\nborder-radius: 10px;\nbox-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);`;
+
+    - value of css result is css code
+
+- func to hex to rgb w param hex
+    - declare c shorthand Regax as /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    - hex is replace hex meth w above var, (m, r, g, b) => r + r + g + g + b + b);
+    - declare c result is /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    - return result ternary temp lit {parse int(result[1], 16)}, {parse int(result[2], 16)}, {parse int(result[3], 16)} ELSE null
+}
+- declare c copy btn doc get id
+- add e list when click call func copy to clipboard
+
+func copy to clipboard
+    - declare c copy txt is value of css result
+    - declare c txt Area is created el textarea in str
+    - value of txt Area is copy txt
+    - add child txt Area to doc body
+    - select meth on txt Area
+    - exec comm "copy" on doc
+    - remove child txt Area to doc body
+
+    - add text content "Copied!" to copy btn
+
+    set timeout 1000 ms 
+        - add text content "Copy to clipboard" to copy btn
