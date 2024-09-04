@@ -1,0 +1,88 @@
+// html
+
+div id container
+    input type text + id new-task + placeholder
+    button id add-task + txt
+    ul id task-list
+/div
+
+// style css
+
+// js
+
+- add e list to doc when DOM content loaded calls function()
+    - doc get id 'add-task' add e list when click calls func add task from input
+    - call func load tasks 
+
+
+- func add task from input
+    - declare c task value is doc get id 'new-task' value
+    - if task value
+        - call add task func w param task value
+        - doc get id 'new-task' value is empty string
+        - call save tasks func
+
+
+- func add task w param task value, is completed is false
+    - declare c ul is doc get id 'task-list'
+    - declare c li is created el 'li'
+
+    - declare c checkbox is created el 'input'
+    - set checkbox type as checkbox
+    - set checkbox as is completed when checked
+    - add e list to checkbox when changed, calls toggle task func
+
+    - declare c text is created el 'span'
+    - set txt content of task value var to text
+    - style text decoration for text is is completed --> 'line-through' ELSE 'none'
+
+    - declare c edit btn is created el 'btn'
+    - set text content of 'Edit' to edit btn
+    - add e list to edit btn when click, call edit task func
+
+     - declare c delete btn is created el 'btn'
+    - set text content of 'Delete' to delete btn
+    - add e list to delete btn when click, call delete task func
+
+    - add child checkbox to li
+    - add child text to li
+    - add child edit btn to li
+    - add child delete btn to li
+
+    - add child li to ul
+
+- func save tasks 
+    - declare c tasks empty array
+    - doc qsa '#task-list li' for each func w param taskLi
+        - declare c text is taskLi qs 'span' as text content
+        - declare c is completed is taskLi qs 'input' as checked
+        - push obj text, is completed to tasks
+    });
+    - ls set item 'tasks', json stringify w args tasks
+
+- func load tasks 
+    - declare c tasks is json parse ls get item w args 'tasks' OR empty array
+    - for each func w param task in tasks
+        - call add task func w args task text, task is completed
+    })
+}
+
+- func toggle task w param event
+    - declare c text is next el sibling of event target
+    - style txt decoration of text as if event target checked --> 'line-through' ELSE 'none'
+    - call save tasks func
+
+- func delete task w param event
+    - declare c li is parent node of event target
+    - remove child li from li parent node
+    - call save tasks func
+
+
+- func edit task w param event
+    - declare c text span is prev el sibling of event target
+    - declare c new text is prompt w "Edit your task", text content of text span var
+    - if new text not eq null
+        - set text content of new text to text span
+        - call save tasks func
+         
+
