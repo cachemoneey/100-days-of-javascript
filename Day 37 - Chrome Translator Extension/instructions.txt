@@ -1,0 +1,72 @@
+// html
+
+label for input text + txt Your Text:
+textarea id input text + rows 10 + placeholder
+
+div
+    label for translate from + txt translate from:
+    select id translate from
+        option value en + txt English
+    /select
+    label for translate to + txt translate to:
+    select id translate to
+        option value es + txt Spanish
+    /select
+/div
+
+button id translate btn + txt
+button id speak btn + txt
+div id output text aria-readonly true
+
+script src countries.js
+
+
+// style css
+
+// js
+
+- declare c select tags is doc qsa select
+
+- for each tag, id in select tags =>
+    for l country_code in countries
+        - declare l selected is if id comp eq 0 ?(if country_code comp eq "en" ---> make "selected" ELSE empty string) ELSE (if country_code comp eq "es" ---> make "selected" ELSE empty string)
+
+        - declare l option is temp lit option {selected} value {country_code}>{countries[country_code]}
+        - insert adj html to tag of beforeend as str, option
+
+
+- doc get id translate btn and add e list when click calls func()
+    - declare c text is doc get id input text value
+    - declare c translate from is doc get id translate from value
+    - declare c translate to is doc get id translate to value
+    - call translate text func w args text, translate from, translate to
+
+- translate text func w params input text, from lang , to lang
+    - const apiUrl = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(inputText)}&langpair=${fromLang}|${toLang}`;
+
+    - fetch apiUrl .then res => res in JSON form .then data => 
+        - if theres response data in data   
+            - declare c translated text is translated text of response data of data
+            - declare c formatted text is remove question marks func w arg translated text 
+            - doc get id output text inner txt is formatted text
+        - ELSE  
+            - doc get id output text inner txt is string error could not translate
+    
+    }).catch error =>
+        - add error to console of Error: as str, error
+        - doc get id output text inner txt is string error occurred
+    });
+}
+
+- remove question marks func w param text
+    return text.replace(/^¿+|¿+$/g, '')
+
+- func speak txt w param text
+    - declare c speech synth is speech synth of window
+    - declare c speech utterance is new speech synth utterance w arg text
+    - speech utterance lang is doc get id translate to value
+    - make speech synth speak w arg speech utterance
+
+- doc get id speak btn and add e list whe click calls func()
+     - declare c translated txt is doc get id output txt inner txt 
+     - call speak txt func w arg translated text
