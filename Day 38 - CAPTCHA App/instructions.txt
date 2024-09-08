@@ -1,0 +1,98 @@
+// html
+
+div id captcha-container
+    img src bg.png
+    div captcha 
+        canvas id captcha + width 200 + height 40
+        button id reload-captcha + txt
+    /div
+    div user
+        input type text + id captcha-input + placeholder
+        button id check-captcha + txt
+    /div
+    p id captcha-status + txt
+/div
+
+// style css
+
+// js
+
+- everything in doc add e list when DOM content loads, call func()
+    - declare v canvas is doc get id captcha
+    - declare v ctx is get context of canvas 2d
+    - declare v captcha text is generate captcha txt func w arg 6 
+    - declare c captcha status is doc get id captcha status
+    - call draw captcha func w arg captcha text
+
+    - func verify captcha
+        - declare v input text is doc get id captcha input value & make lower case
+
+        - if input text comp eq captcha text 2 lower case
+            - set text content of captcha status as a string showing correct
+            - set color style of captcha status as green in string
+        - else if len of input text less than 6
+            - set text content of captcha status as a string showing enter all chars
+            - set color style of captcha status as red in 
+        - else 
+            - set text content of captcha status as a string showing captcha incorrect
+            - set color style of captcha status as red in string
+        }
+
+        - set time out for 3 secs () =>
+            - set text content of captcha status as a string showing status: IDLE
+            - set color style of captcha status as black in string
+
+        - doc get id captcha-input value and set as empty string
+        - set captcha text as generate captcha text func w arg 6
+        - call draw captcha func w arg captcha text
+    }
+
+    - doc get id check captcha add e list when clicked calls verify captcha func
+
+    - doc get id reload captcha add e list when clicked calls func()
+        - set captcha text as generate captcha text func w arg 6
+        - call draw captcha func w arg captcha text
+        - doc get id captcha-input value and set as empty string
+        - set text content of captcha status as a string showing status: IDLE
+        
+
+
+    - func generate captcha txt w param len
+        - declare l result as empty string
+        - declare c chars 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        - declare c chars len is len of chars
+        - for let i < len  
+            - result add assign chars.charAt(rounded up(random number() * charsLength));
+        }
+        - return result
+
+    - func draw captcha w param text
+        - clear rect of ctx w args 0, 0, canvas width, canvas height
+        - fill style of ctx w string f3f3f3
+        - fill rect of ctx w args 0, 0, canvas width, canvas height
+        - call add noise func w arg ctx
+        - fill style of ctx w string 06108c
+        - set font of ctx as string 24px arial
+
+        - declare c text width as ctx measure text meth w param text .width
+        - declare c start x is (canvas width - textWidth) / 3
+
+        - for let i < len of text
+            - save meth on ctx  
+            - translate ctx w args start x + i x 20, 30
+            - fill txt of ctx w args text[i], 0, 0
+            - restore meth on ctx
+        }
+    }
+
+    - func add noise w param ctx
+        - declare c img data is get img data of ctx w args 0, 0, canvas width, canvas height
+        - declare c px is data of img data
+        - for let i < px len
+            - declare l color is (ran num() more than 0.5) --> 255 ELSE 0
+            - px[i] is px[i + 1] is px[i + 2] is color
+        }
+        - put img data in ctx of args img data, 0, 0
+    }
+
+});
