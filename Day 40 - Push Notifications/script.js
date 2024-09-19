@@ -6,7 +6,7 @@ button.addEventListener("click", () => {
             const notification = new Notification("Example Notification", {
                 body: "This is a push notification",
                 data: { hello: "world" },
-                icon: "",
+                icon: "", // logo can be put here
                 // tag is useful for overwriting current notification so a new notif is not created every click and they don't stack on top of each other
                 tag: "Welcome message",
             })
