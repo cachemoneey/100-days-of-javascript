@@ -7,7 +7,7 @@ button.addEventListener("click", () => {
                 body: "This is a push notification",
                 data: { hello: "world" },
                 icon: "",
-                // tag is useful for overwriting current notif so a new notif is not created every click and they don't stack on top of each other
+                // tag is useful for overwriting current notification so a new notif is not created every click and they don't stack on top of each other
                 tag: "Welcome message",
             })
 
@@ -18,7 +18,7 @@ button.addEventListener("click", () => {
     })
 })
 
-// push notif if you are on another page/tab
+// push notification if you are on another page/tab
 let notification2
 let interval
 document.addEventListener("visibilitychange", () => {
@@ -31,7 +31,7 @@ document.addEventListener("visibilitychange", () => {
             })
         }, 100);
     } else {
-        // close notif when going back to page/tab
+        // close notification when going back to page/tab
         if (interval) clearInterval(interval)
         if (notification2) notification2.close()
     }
