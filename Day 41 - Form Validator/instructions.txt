@@ -1,0 +1,135 @@
+// html
+
+div container
+    img src bg.png
+    form id mainForm + no validate
+        h2 + title
+        div form-control
+            label for name + txt
+            input type text + id name + placeholder + autocomplete off
+            i class icon
+        /div
+
+        div form-control
+            label for email + txt
+            input type email + id email + placeholder + autocomplete off
+            i class icon
+        /div
+
+        div form-control
+            label for phone + txt
+            input type tel + id phone + placeholder + autocomplete off
+            i class icon
+        /div
+
+        div form-control
+            label for password + txt
+            input type password + id password + placeholder + autocomplete off
+            i class icon
+        /div
+
+        div form-control
+            label for message + txt
+            input type message + id message + placeholder + autocomplete off
+            i class icon
+        /div
+
+        button type submit + txt
+
+    /form
+/div
+
+ <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Success!</h2>
+            <p>Your form has been submitted successfully.</p>
+        </div>
+    </div>
+
+
+// style css
+
+// js
+
+- add e list doc when DOM content load --> func ()
+
+    - declare c form doc get id mainForm
+    - declare c name doc get id name
+    - declare c email doc get id email
+    - declare c phone doc get id phone
+    - declare c password doc get id password
+    - declare c message doc get id message
+
+    - add e list to form when submit --> func (e)
+        - prevent default behaviour of e
+        - if check inputs func()
+            - call show modal func()
+
+        
+
+    - add e list to name when input () => 
+        - call validate field func w args name, name value trimmed (method) doesn't eq= empty string, string that it cannot be blank
+
+    ^ repeat above for email, phone, password and message
+
+
+
+    - check inputs func
+        - declare l is valid set to true
+        - call validate field func w args name, name value trimmed (method) doesn't eq= empty string, string that it cannot be blank
+
+        ^ repeat above for email, phone, password and message but for email use isEmail() and phone use isPhone() functions
+
+
+
+    - get all classes of .form-control and for each (control) =>
+        - if control has class of error
+            - set is valid false
+        
+    return is valid
+
+
+    - validate field func w params input, condition, errorMessage
+        if condition
+            - call set success func w arg input
+        else
+            - call set error func w arg input and errorMessage
+
+
+    - set error func w params input and message
+        - declare c formCtrl is parent el of input
+        - declare c icon is the selected class .icon of formCtrl
+        - add a class name of 'form-control error' to formCtrl
+        - add a placeholder of message to input
+        
+    - set success func w params input
+        - declare c formCtrl is parent el of input
+        - declare c icon is the selected class .icon of formCtrl
+        - add a class name of 'form-control success' to formCtrl
+        - add a class name to icon of 'icon fas fa-check-circle'
+
+    - func isEmail w param email {
+        return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
+    }
+
+    - func isPhone w param phone {
+        return /^\+?(\d.*){3,}$/.test(phone);
+    }
+
+    - show modal func
+        - declare c modal is doc get id 'successModal'
+        - style display of modal w block
+
+        - declare c close btn select class .close-button
+        - when close btn (on)click is func ()
+            - style display of modal w none
+
+        
+        - when window (on)click is func w param event
+            - if target of event comp eq modal
+                - style display of modal w none
+                
+
+        
+            
